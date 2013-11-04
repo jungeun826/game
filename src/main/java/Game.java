@@ -2,16 +2,11 @@
 public class Game {
 	int[] rolls;
 	int currentIndex;
-	int rolling_number;
-	int strike_score;
-	int spare_complete_score;
-	int frame_number;
+	public static final int rolling_number = 20;
+	public static final int strike_score = 10;
+	public static final int spare_complete_score = 10;
+	public static final int frame_number = 10;
 	public Game(){
-		currentIndex = 0;
-		rolling_number = 20;
-		strike_score = 10;
-		spare_complete_score = 10;
-		frame_number = 10;
 		rolls = new int[rolling_number];
 	}
 	public void roll(final int pins) {
