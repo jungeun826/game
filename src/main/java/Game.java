@@ -3,16 +3,17 @@ public class Game {
 	int rolls[];
 	int currentIndex= 0;
 
+	public Game(){
+		rolls = new int[20];
+	}
 	public void roll(final int pins) 
 	{
 		rolls[currentIndex++]= pins;
-		rolls = new int[20];
 	}
 
 	public int score() 
 	{
 		int score = 0; 
-
 		for(int frame = 0; frame < 10; frame++)
 		{
 			if(isStrike(frame)){
