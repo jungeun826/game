@@ -1,6 +1,5 @@
 import static org.junit.Assert.assertEquals;
 
-//import java.util.Random;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,15 +15,20 @@ private Game game;
 	public void setUp() throws Exception {
 		game = new Game();
 	}
+	
+	@Test
+	public void FrameNumtest() {
+		rollMany(9, 0);
+		
+		assertEquals(5,game.getCurrentFrame());
+	}
 //버전 올라가서 어노테이션으로 바뀜
 	@Test
 	public void GutterGametest() {
 		//fail("Not yet implemented");//무조건 fail
 		//실제값 =현재값
-		int n = 20;
-		int pins = 0;
 		
-		rollMany(n, pins);
+		rollMany(20, 0);
 		assertEquals(0,game.score());
 	}
 	
@@ -60,7 +64,6 @@ private Game game;
 	@Test
 	public void OneStrikeGameTest(){
 		game.roll(10);
-		game.roll(0);
 		
 		game.roll(3);
 		game.roll(4);
@@ -71,14 +74,32 @@ private Game game;
 	}
 	
 	@Test
-	public void GameTest(){
-		/*int rolls = 0;
-		int pins = 0;
-		Random rand = new Random(10);
-		for(rolls = 0 ; rolls < 20; rolls++){
-			pins = rand.nextInt();
-			game.roll(pins);
-		}*/
+	public void OneStrikeGameTest2(){
+		game.roll(10);
+		game.roll(0);
+		game.roll(3);
+		game.roll(4);
+		
+		rollMany(16,0);
+		
+		assertEquals(20,game.score());
+	}
+	
+	@Test
+	public void perfectStrikeGameTest(){
+		rollMany(12,10);
+		
+		
+		assertEquals(300,game.score());
+		
+	}
+	
+	@Test
+	public void perfectSpareGameTest(){
+		rollMany(21,5);
+		
+		
+		assertEquals(150,game.score());
 		
 	}
 }
